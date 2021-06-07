@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include('navbar.html.twig') %}
+    <h1>read blog</h1>
+
+    <h1>{{ post.title }}</h1>
+    <h2>{{ post.content  }}</h2>
+    <small>{{ post.date|date("d/m/Y")}}</small>
+    <h2>{{ post.author }}</h2>
+
+{% endblock  %}

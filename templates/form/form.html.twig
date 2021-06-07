@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormController!{% endblock %}
+
+{% block body %}
+    {% include('navbar.html.twig') %}
+    <div class="mb-3">
+        {{ form(post_form) }}
+    </div>
+{% endblock %}

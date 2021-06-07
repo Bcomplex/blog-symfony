@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog index{% endblock %}
+
+{% block body %}
+    {% include('navbar.html.twig') %}
+    <h1>Blog index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Date</th>
+                <th>Author</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for blog in blogs %}
+            <tr>
+                <td>{{ blog.id }}</td>
+                <td>{{ blog.title }}</td>
+                <td>{{ blog.content[:10] }}</td>
+                <td>{{ blog.date ? blog.date|date('Y-m-d') : '' }}</td>
+                <td>{{ blog.author }}</td>
+                <td>{{ blog.image }}</td>
+                <td>
+                    <a type="button" class="btn btn-warning" href="{{ path('edit_show', {'id': blog.id}) }}">show</a>
+                    <a type="button" class="btn btn-secondary" href="{{ path('edit_edit', {'id': blog.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a type="button" class="btn btn-primary" href="{{ path('edit_new') }}">Create new</a>
+{% endblock %}
